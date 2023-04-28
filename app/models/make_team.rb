@@ -1,0 +1,2 @@
+class MakeTeam < ApplicationRecord
+end
