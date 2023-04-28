@@ -31,4 +31,10 @@ Rails.application.routes.draw do
   put "coachs/:id", to: "coachs#update"
   delete "coachs/:id", to: "coachs#destroy"
 
+  get "make_teams/index"
+  get "make_teams/:id", to: "make_teams#show"
+  post "make_teams/create"
+  put "make_teams/:id", to: "make_teams#update"
+  delete "make_teams/:id", to: "make_teams#destroy"
+
 end
