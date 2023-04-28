@@ -1,0 +1,2 @@
+class Seriase < ApplicationRecord
+end

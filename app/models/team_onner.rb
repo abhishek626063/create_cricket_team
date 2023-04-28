@@ -1,0 +1,2 @@
+class TeamOnner < ApplicationRecord
+end

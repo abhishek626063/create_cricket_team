@@ -1,0 +1,2 @@
+class LoginTeamOnnersController < ApplicationController
+end

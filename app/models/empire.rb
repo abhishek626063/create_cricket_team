@@ -1,0 +1,2 @@
+class Empire < ApplicationRecord
+end
