@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_28_080154) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_28_110338) do
   create_table "coaches", force: :cascade do |t|
     t.string "coach_name"
     t.string "type_of_coach"
@@ -35,6 +35,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_28_080154) do
     t.string "star"
     t.string "picture"
     t.integer "match_empiring"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "make_teams", force: :cascade do |t|
+    t.string "team_name"
+    t.string "total_player_and_team_member"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
