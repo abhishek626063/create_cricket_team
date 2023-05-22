@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_22_073930) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_22_114045) do
   create_table "coaches", force: :cascade do |t|
     t.string "coach_name"
     t.string "type_of_coach"
@@ -54,6 +54,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_22_073930) do
     t.string "ground_onner_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "seriase_id"
+    t.index ["seriase_id"], name: "index_grounds_on_seriase_id"
   end
 
   create_table "make_teams", force: :cascade do |t|
@@ -127,5 +129,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_22_073930) do
 
   add_foreign_key "coaches", "make_teams"
   add_foreign_key "empires", "seriases"
+  add_foreign_key "grounds", "seriases"
   add_foreign_key "players", "make_teams"
 end
