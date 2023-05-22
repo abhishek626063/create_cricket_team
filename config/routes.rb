@@ -37,4 +37,6 @@ Rails.application.routes.draw do
   put "make_teams/:id", to: "make_teams#update"
   delete "make_teams/:id", to: "make_teams#destroy"
 
+  resources :grounds
+
 end
