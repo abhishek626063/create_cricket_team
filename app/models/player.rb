@@ -1,5 +1,6 @@
 class Player < ApplicationRecord
-    after_create :generate_token
+  belongs_to :make_team
+  after_create :generate_token
 
   protected
 
