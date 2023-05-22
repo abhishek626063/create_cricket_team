@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_28_110338) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_22_073930) do
   create_table "coaches", force: :cascade do |t|
     t.string "coach_name"
     t.string "type_of_coach"
@@ -20,6 +20,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_28_110338) do
     t.integer "one_seriase_rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "make_team_id"
+    t.index ["make_team_id"], name: "index_coaches_on_make_team_id"
   end
 
   create_table "empires", force: :cascade do |t|
@@ -37,11 +39,40 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_28_110338) do
     t.integer "match_empiring"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "seriase_id"
+    t.index ["seriase_id"], name: "index_empires_on_seriase_id"
+  end
+
+  create_table "grounds", force: :cascade do |t|
+    t.string "name"
+    t.date "grount_create_date"
+    t.string "ground_address"
+    t.string "ground_boundry_size"
+    t.string "one_match_rate"
+    t.string "two_match_rate"
+    t.string "all_seriase_rate"
+    t.string "ground_onner_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "make_teams", force: :cascade do |t|
     t.string "team_name"
     t.string "total_player_and_team_member"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "make_teams_seriases", force: :cascade do |t|
+    t.integer "make_team_id"
+    t.integer "seriase_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "make_teams_team_onners", force: :cascade do |t|
+    t.integer "team_onner_id"
+    t.integer "make_team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -62,6 +93,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_28_110338) do
     t.string "email"
     t.string "password"
     t.string "token"
+    t.integer "make_team_id"
+    t.index ["make_team_id"], name: "index_players_on_make_team_id"
   end
 
   create_table "seriases", force: :cascade do |t|
@@ -92,4 +125,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_28_110338) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "coaches", "make_teams"
+  add_foreign_key "empires", "seriases"
+  add_foreign_key "players", "make_teams"
 end
